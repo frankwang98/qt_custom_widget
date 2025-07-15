@@ -1,0 +1,27 @@
+/* 设置整个窗口的背景为蓝色渐变 */
+QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c7d, stop:1 #004e8c);  /* 蓝色渐变背景 */
+}
+
+/* 设置所有按钮的样式 */
+QPushButton {
+    background-color: #007acc;  /* 按钮背景颜色 - 蓝色 */
+    color: white;  /* 字体颜色 */
+    border-radius: 10px;  /* 圆角按钮 */
+    padding: 10px 20px;  /* 按钮内边距 */
+    font-size: 14px;  /* 字体大小 */
+}
+
+QPushButton:hover {
+    background-color: #66b3ff;  /* 按钮悬停时的颜色 */
+}
+
+QPushButton:pressed {
+    background-color: #005c99;  /* 按钮按下时的颜色 */
+}
+
+/* 设置标签样式 */
+QLabel {
+    font-size: 18px;
+    color: #66b3ff;  /* 字体颜色 */
+}

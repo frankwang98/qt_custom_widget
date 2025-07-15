@@ -7,6 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    QFile file(":/style/lightblue.qss");
+    if (file.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream ts(&file);
+        QString styleSheet = ts.readAll();
+        this->setStyleSheet(styleSheet);
+        file.close();
+    }
+    this->setWindowIcon(QIcon(":/style/icon.png"));
+
     battery = new Battery(this);
     battery->setGeometry(50, 100, 150, 80);
     battery->setValue(batteryValue);
@@ -31,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     switchButton->setChecked(true);
     switchButton->setGeometry(500, 400, 120, 30);
     switchStatusLabel = new QLabel("状态: 开", this);
-    switchStatusLabel->setGeometry(500, 450, 120, 30);
+    switchStatusLabel->setGeometry(500, 450, 120, 50);
     connect(switchButton, &SwitchButton::toggled, [this](bool checked) {
         switchStatusLabel->setText(checked ? "状态: 开" : "状态: 关");
     });
@@ -42,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
     ledIndicator->setSize(50);
     ledIndicator->setGeometry(350, 380, 30, 30);
     toggleLedButton = new QPushButton("切换LED状态", this);
-    toggleLedButton->setGeometry(350, 450, 120, 30);
+    toggleLedButton->setGeometry(350, 450, 120, 50);
     connect(toggleLedButton, &QPushButton::clicked, [this]() {
         ledIndicator->setOn(!ledIndicator->isOn());
     });

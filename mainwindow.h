@@ -6,6 +6,8 @@
 #include <QSlider>
 #include <QPushButton>
 #include <QLabel>
+#include <QFile>
+#include <QTextStream>
 #include "battery.h"
 #include "dashboard.h"
 #include "compasswidget.h"

@@ -1,0 +1,171 @@
+/* 主窗口背景 - 浅蓝渐变 */
+QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                               stop:0 #e0f7ff, stop:1 #b3e5fc);
+    border: 1px solid #4fc3f7;
+}
+
+/* 通用按钮样式 - 半透明科技感 */
+QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                               stop:0 rgba(79, 195, 247, 0.8), 
+                               stop:1 rgba(2, 136, 209, 0.8));
+    border: 1px solid #4fc3f7;
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    font: bold 10pt "Segoe UI";
+    min-width: 80px;
+    min-height: 25px;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                               stop:0 rgba(100, 210, 255, 0.9), 
+                               stop:1 rgba(30, 160, 225, 0.9));
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                               stop:0 rgba(50, 175, 227, 0.9), 
+                               stop:1 rgba(0, 110, 180, 0.9));
+}
+
+/* 输入框样式 */
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #4fc3f7;
+    border-radius: 3px;
+    padding: 5px;
+    color: #0277bd;
+    selection-background-color: #4fc3f7;
+    font: 10pt "Segoe UI";
+}
+
+/* 标签样式 */
+QLabel {
+    color: #01579b;
+    font: 9pt "Segoe UI";
+}
+
+QLabel[important="true"] {
+    color: #0288d1;
+    font: bold 10pt "Segoe UI";
+}
+
+/* 复选框和单选按钮 */
+QCheckBox, QRadioButton {
+    color: #01579b;
+    spacing: 5px;
+    font: 9pt "Segoe UI";
+}
+
+QCheckBox::indicator, QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+/* 组合框 */
+QComboBox {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #4fc3f7;
+    border-radius: 3px;
+    padding: 5px;
+    min-width: 6em;
+    color: #0277bd;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 1px;
+    border-left-color: #4fc3f7;
+    border-left-style: solid;
+}
+
+/* 进度条 */
+QProgressBar {
+    border: 1px solid #4fc3f7;
+    border-radius: 3px;
+    text-align: center;
+    color: #01579b;
+}
+
+QProgressBar::chunk {
+    background-color: #4fc3f7;
+    width: 10px;
+}
+
+/* 滑块 */
+QSlider::groove:horizontal {
+    height: 8px;
+    background: rgba(200, 200, 200, 0.5);
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: qradialgradient(cx:0.5, cy:0.5, radius:0.5,
+                               fx:0.5, fy:0.5,
+                               stop:0 #4fc3f7, stop:1 #0288d1);
+    width: 16px;
+    height: 16px;
+    margin: -4px 0;
+    border-radius: 8px;
+}
+
+/* 菜单栏 */
+QMenuBar {
+    background-color: rgba(179, 229, 252, 0.7);
+    color: #01579b;
+}
+
+QMenuBar::item {
+    spacing: 3px;
+    padding: 5px 10px;
+    background: transparent;
+}
+
+QMenuBar::item:selected {
+    background: rgba(79, 195, 247, 0.5);
+    border-radius: 2px;
+}
+
+/* 滚动条 */
+QScrollBar:vertical {
+    border: none;
+    background: rgba(200, 230, 255, 0.3);
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: rgba(79, 195, 247, 0.6);
+    min-height: 20px;
+    border-radius: 4px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* 分隔符 */
+QSplitter::handle {
+    background: rgba(79, 195, 247, 0.3);
+}
+
+/* 停靠窗口 */
+QDockWidget {
+    titlebar-close-icon: url(close.png);
+    titlebar-normal-icon: url(float.png);
+    background: rgba(224, 247, 255, 0.8);
+    border: 1px solid #4fc3f7;
+}
+
+QDockWidget::title {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                               stop:0 rgba(179, 229, 252, 0.8), 
+                               stop:1 rgba(129, 212, 250, 0.8));
+    padding: 5px;
+    text-align: center;
+}

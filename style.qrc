@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style/icon.png</file>
+        <file>style/blue.qss</file>
+        <file>style/material.qss</file>
+        <file>style/mac.qss</file>
+        <file>style/majaromix.qss</file>
+        <file>style/amoled.qss</file>
+        <file>style/console.qss</file>
+        <file>style/elegantdark.qss</file>
+        <file>style/ubuntu.qss</file>
+        <file>style/lightblue.qss</file>
+    </qresource>
+</RCC>

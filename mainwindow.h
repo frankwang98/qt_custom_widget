@@ -14,6 +14,7 @@
 #include "ringprogresswidget.h"
 #include "switchbutton.h"
 #include "ledindicator.h"
+#include "speedometer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -47,6 +48,9 @@ private:
     LedIndicator *ledIndicator;
     QPushButton *toggleLedButton;
 
+    Speedometer *speedometer;
+    int speedometerValue = 0;
+
 signals:
     void batteryChanged(int newValue);
 
@@ -56,5 +60,7 @@ private slots:
     void updateDashBoard();
 
     void updateRingProgress();
+
+    void updateSpeedometer();
 };
 #endif // MAINWINDOW_H

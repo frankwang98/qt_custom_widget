@@ -23,7 +23,8 @@ SOURCES += \
     compasswidget.cpp \
     ringprogresswidget.cpp \
     switchbutton.cpp \
-    ledindicator.cpp
+    ledindicator.cpp \
+    speedometer.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -32,7 +33,8 @@ HEADERS += \
     compasswidget.h \
     ringprogresswidget.h \
     switchbutton.h \
-    ledindicator.h
+    ledindicator.h \
+    speedometer.h
 
 FORMS += \
     mainwindow.ui

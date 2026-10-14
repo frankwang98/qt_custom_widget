@@ -1,5 +1,6 @@
 #include "speedometer.h"
 #include <QPainter>
+#include <QPainterPath>
 #include <QtMath>
 
 struct Speedometer::PainterHelper
@@ -268,7 +269,7 @@ void Speedometer::drawArcDialLineNumber(QPainter* painter)
 		qreal textXX = (textRadius) * cos(angleArc);
 		qreal textYY = (textRadius) * sin(angleArc);
 
-		int textW = (int)fm.width(valueStr);
+		int textW = (int)fm.horizontalAdvance(valueStr);
 		int textH = (int)fm.height();
 
 		textXX -= textW / 2;

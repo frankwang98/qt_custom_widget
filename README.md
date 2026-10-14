@@ -1,28 +1,55 @@
-# Qt 控件与示例库
+# Qt Custom Widgets · 轻量级 Qt Widgets 控件合集
 
-集中维护个人 Qt Widgets 控件和小型交互示例。每个示例保留独立工程，可单独打开和构建。
-
-## 控件展示
-
-仓库根目录的 `qt_custom_control.pro` 是原有控件展示工程，包含电量控件（引用）、LED 指示灯、切换按钮、仪表盘、指南针、圆环进度条和速度表盘。另有 `bg/bg.pro` 按钮示例。
+独立、可复用的 C++/Qt Widgets 控件，保留原有 qmake 工程，新增 CMake 静态库和交互展示程序。适用于桌面仪表盘、状态监控与工具软件。
 
 ![控件展示](assets/demo2.png)
 
-## 独立示例
+## 控件
 
-| 示例 | 内容 | 工程入口 |
+| 控件 | 用途 | 主要 API |
 | --- | --- | --- |
-| [绘图与设计模式](examples/drawing/README.md) | 形状工厂、填充策略、绘图管理和 Qt 绘制 | `examples/drawing/draw.pro` |
-| [停车场动画](examples/parking/README.md) | 多车绘制、轨迹、简易泊车和碰撞提示 | `examples/parking/park.pro` |
+| Battery | 电量和报警状态 | `setValue`, `setRange`, `setAlarmValue` |
+| DashBoard | 通用仪表盘 | `setValue`, `setMinValue`, `setMaxValue`, `setUnit` |
+| CompassWidget | 方位角 | `setAngle` |
+| RingProgressWidget | 圆环进度 | `setRange`, `setValue` |
+| SwitchButton | 带动画的开关 | `setChecked`, `toggled` |
+| LedIndicator | LED 状态灯 | `setOn`, `setOnColor` |
+| Speedometer | 数值/速度表盘 | `setIndicatorValue`, `setUnitText` |
 
-这两个示例分别从 [qt_drawing](https://github.com/frankwang98/qt_drawing) 与 [qt_parkinglot](https://github.com/frankwang98/qt_parkinglot) 整理进入本仓库，保留原有实现与工程文件。各自仍为独立应用，不与控件展示工程一起编译。
+> 不同控件历史 API 命名有所差异；本次保留已有 API，避免破坏旧项目。
 
-## 构建
+## 构建（推荐 CMake）
 
-安装带 Qt Widgets 的 Qt 开发环境，在 Qt Creator 中打开对应的 `.pro`，选择已安装的 Kit 后构建运行。命令行也可以在对应目录执行 `qmake` 与 `make`（Windows 使用相应 Kit 的构建工具）。
+要求 CMake >= 3.16、C++17、Qt 5 或 Qt 6（Widgets）。
 
-本仓库使用原有 qmake 工程；尚未在当前环境编译验证。迁移只整合目录和说明，后续功能调整在这里维护。
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j
+./build/qt_widget_gallery
+```
 
-## 许可证
+在 Windows 上使用对应构建配置下的可执行文件。仅使用控件库可设置 `-DBUILD_WIDGET_DEMO=OFF`。
 
-MIT，见 [LICENSE](LICENSE)。
+其他 CMake 项目可以用 `add_subdirectory(path/to/qt_custom_widget)`，然后 `target_link_libraries(your_app PRIVATE qt_custom_widgets)`。
+
+仍支持在 Qt Creator 中打开 `qt_custom_control.pro`，或使用 qmake + make。
+
+## 交互与布局
+
+主 Demo 自动循环显示电量、仪表盘、进度和速度；指南针可拖动滑块，LED 可通过按钮或开关切换。开关支持鼠标和 Space/Enter 键，并显示键盘焦点。绘制使用 Qt 的逻辑坐标，建议在目标系统上检查高 DPI 缩放、窗口缩放与不同字体。
+
+## 其他独立示例
+
+- [绘图与设计模式](examples/drawing/README.md)：`examples/drawing/draw.pro`
+- [停车场动画](examples/parking/README.md)：`examples/parking/park.pro`
+- `bg/bg.pro`：按钮示例
+
+这些示例保留独立工程，不包含在主控件库中。
+
+## 验证
+
+GitHub Actions 对 Qt5/Qt6 执行 CMake 构建。CI 不等同于人工 GUI 视觉验收；请在本机运行 Gallery 验证外观与交互。
+
+## License
+
+MIT，详见 [LICENSE](LICENSE)。

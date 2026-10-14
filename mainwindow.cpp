@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     heading->setFont(headingFont);
     toolbar->addWidget(heading);
     toolbar->addStretch();
-    toolbar->addWidget(new QLabel(tr("Theme:"), root));
+    toolbar->addWidget(new QLabel(tr("Theme:"), this));
     auto *theme = new QComboBox(root);
     theme->addItem(tr("Light blue"), "lightblue");
     theme->addItem(tr("Elegant dark"), "elegantdark");
@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     toolbar->addWidget(theme);
     vertical->addLayout(toolbar);
 
-    auto *scroll = new QScrollArea(root);
+    auto *scroll = new QScrollArea(this);
     scroll->setWidgetResizable(true);
     scroll->setFrameShape(QFrame::NoFrame);
     auto *content = new QWidget(scroll);
@@ -121,7 +121,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     speedSlider->setRange(0, 1024);
     speedSlider->setValue(0);
     speedLayout->addWidget(speedSlider);
-    connect(speedSlider, &QSlider::valueChanged, speedometer, &Speedometer::setIndicatorValue);
+    connect(speedSlider, &QSlider::valueChanged, speedometer, [this](int value) {
+        speedometer->setIndicatorValue(value);
+    });
     auto *unitRow = new QHBoxLayout();
     unitRow->addWidget(new QLabel(tr("Unit:")));
     auto *unit = new QComboBox();
@@ -132,7 +134,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     grid->setColumnStretch(0, 1);
     grid->setColumnStretch(1, 1);
-    content->setLayout(grid);
     scroll->setWidget(content);
     vertical->addWidget(scroll, 1);
     ui->centralwidget->setLayout(vertical);

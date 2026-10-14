@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     toolbar->addWidget(heading);
     toolbar->addStretch();
     toolbar->addWidget(new QLabel(tr("Theme:"), this));
-    auto *theme = new QComboBox(root);
+    auto *theme = new QComboBox(this);
     theme->addItem(tr("Light blue"), "lightblue");
     theme->addItem(tr("Elegant dark"), "elegantdark");
     theme->addItem(tr("AMOLED"), "amoled");

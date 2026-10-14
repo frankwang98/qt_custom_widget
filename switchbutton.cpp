@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QStyle>
+#include <QStyleOption>
 
 SwitchButton::SwitchButton(QWidget *parent) : QWidget(parent) {
     setMinimumSize(50, 30);
